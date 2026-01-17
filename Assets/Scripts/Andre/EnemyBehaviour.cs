@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
         _currentHealth -= damage;
         _healthBar.UpdateHealthBarValue(_currentHealth, _maxHealth);
 
-        transform.DOPunchScale(Vector3.one * 2.5f, .25f);
+        transform.DOPunchScale(Vector3.one * 2f, .25f);
 
         if (_currentHealth <= 0)
         {

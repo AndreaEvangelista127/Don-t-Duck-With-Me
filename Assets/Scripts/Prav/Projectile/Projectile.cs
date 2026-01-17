@@ -4,15 +4,16 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private Rigidbody2D playerRigidbody;
-
+    private int damageAmount;
     private void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    public void LaunchProjectile(Vector3 direction, float force)
+    public void LaunchProjectile(Vector3 direction, float force, int damage)
     {
         playerRigidbody.linearVelocity = (direction * force);
+        damageAmount = damage;
         Destroy(gameObject, 3.0f);
     }
 
@@ -20,7 +21,7 @@ public class Projectile : MonoBehaviour
     {
         if (collision.TryGetComponent(out Enemy enemy))
         {
-            enemy.TakeDamage(50);
+            enemy.TakeDamage(damageAmount);
             Destroy(gameObject);
         }
 
