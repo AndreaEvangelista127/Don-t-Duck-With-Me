@@ -22,7 +22,6 @@ public class MainMenuController : MonoBehaviour
     public void StartGame() 
     {
         PlayClick();
-        float delay = (Quack != null) ? Quack.length : 0.5f;
         SceneManager.LoadScene("Playground");
     }
     public void QuitGame() 
