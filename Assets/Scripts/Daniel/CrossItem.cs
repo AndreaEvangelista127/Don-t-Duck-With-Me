@@ -10,6 +10,7 @@ public class CrossItem : BasePickUp
 
     public override void PickUp()
     {
-
+        TryGetComponent(out PlayerHealthComponent playerHealth);
+        playerHealth.AddHealth(_playerHealth);
     }
 }
