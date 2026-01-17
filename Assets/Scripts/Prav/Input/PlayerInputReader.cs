@@ -7,7 +7,7 @@ public class PlayerInputReader : MonoBehaviour, PlayerInput.ILocomotionActions
     [HideInInspector]
     public Vector2 PlayerMovementValue;
     public event Action OnPlayerDash;
-
+    public event Action OnPlayerShoot;
     private PlayerInput playerInput;
 
     private void Awake()
@@ -37,5 +37,12 @@ public class PlayerInputReader : MonoBehaviour, PlayerInput.ILocomotionActions
 
     }
 
+    public void OnShoot(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            OnPlayerShoot?.Invoke();    
+        }
 
+    }
 }

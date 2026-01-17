@@ -40,7 +40,7 @@ public class InsanityMeter : MonoBehaviour
         postProcess.profile.TryGet(out playerChromatic);
         postProcess.profile.TryGet(out playerDistortion);
         postProcess.profile.TryGet(out playerLift);
-    }
+    } 
     public void AddInsanity(float value)
     {
         insanity = Mathf.Clamp(insanity + value, 0.0f, 100.0f);
@@ -57,14 +57,17 @@ public class InsanityMeter : MonoBehaviour
         insanity = Mathf.Clamp(insanity - value, 0.0f, 100.0f);
         OnInsanityChanged?.Invoke(value);
 
-        ReduceEffects(.1f);
-        StartSmoothRandomize(.5f);
-
         if (insanity == 0)
         {
             OnInsanityZero?.Invoke();
             ClearEffects();
         }
+        else
+        {
+            ReduceEffects(.1f);
+            StartSmoothRandomize(.5f);
+        }
+
         RefreshInsanityUI();
     }
     private void RefreshInsanityUI()
@@ -117,13 +120,17 @@ public class InsanityMeter : MonoBehaviour
         playerChromatic.intensity.value = 0f;
         playerDistortion.intensity.value = 0f;
 
+        playerLift.gain.SetValue(new Vector4Parameter(new Vector4(0f,0f,0f,0f)));
+        playerLift.lift.SetValue(new Vector4Parameter(new Vector4(0f,0f,0f,0f)));
+        playerLift.gamma.SetValue(new Vector4Parameter(new Vector4(0f,0f,0f,0f)));
+
     }
 
     private void ReduceEffects(float intensity)
     {
-        playerBloom.intensity.value -= intensity;
-        playerChromatic.intensity.value -= intensity;
-        playerDistortion.intensity.value -= intensity;
-
+        Debug.Log("Reducing effects");
+        playerBloom.intensity.value = Mathf.Clamp(playerBloom.intensity.value - intensity, 0.0f, 100.0f);
+        playerChromatic.intensity.value = Mathf.Clamp(playerChromatic.intensity.value - intensity, 0.0f, 100.0f);
+        playerDistortion.intensity.value = Mathf.Clamp(playerDistortion.intensity.value - intensity, 0.0f, 100.0f);
     }
 }
