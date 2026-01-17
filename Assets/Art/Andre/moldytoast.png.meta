@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 8b8cb1e4f9b30e043887ed03d1c34ade
+guid: 6f037c99877210c46a79f69c7dd61f9d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8542067924699649294
-    second: highwalkingduckie_0
+      213: 8658343877352668373
+    second: moldytoast_0
+  - first:
+      213: -3744452345612493986
+    second: moldytoast_1
+  - first:
+      213: -7216497840915573835
+    second: moldytoast_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,12 +52,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 800
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: highwalkingduckie_0
+      name: moldytoast_0
       rect:
         serializedVersion: 2
-        x: 844
-        y: 321
-        width: 1701
-        height: 1723
+        x: 1318
+        y: 692
+        width: 872
+        height: 768
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2fae405fa7a747980800000000000000
-      internalID: -8542067924699649294
+      spriteID: 5dcb8c0f1ed982870800000000000000
+      internalID: 8658343877352668373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moldytoast_1
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 1454
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5b936d3e68090cc0800000000000000
+      internalID: -3744452345612493986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moldytoast_2
+      rect:
+        serializedVersion: 2
+        x: 1900
+        y: 689
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b39ad5c279d9db90800000000000000
+      internalID: -7216497840915573835
       vertices: []
       indices: 
       edges: []
@@ -125,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      highwalkingduckie_0: -8542067924699649294
+      moldytoast_0: 8658343877352668373
+      moldytoast_1: -3744452345612493986
+      moldytoast_2: -7216497840915573835
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
