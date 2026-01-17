@@ -10,6 +10,6 @@ public class CrossItem : BasePickUp
 
     public override void PickUp()
     {
-
+        TryGetComponent();
     }
 }

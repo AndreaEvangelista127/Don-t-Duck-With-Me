@@ -10,7 +10,7 @@ internal class PillItem : BasePickUp
 
     public override void PickUp()
     {
-        TryGetComponent<InsanityMeter>(out InsanityMeter insanityMeter);
+        TryGetComponent(out InsanityMeter insanityMeter);
         insanityMeter.AddInsanity(_playerSanity);
     }
 }
