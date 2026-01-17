@@ -10,6 +10,7 @@ public class KFDItem : BasePickUp
 
     public override void PickUp()
     {
-        TryGetComponent<>
+        TryGetComponent(out PlayerCombat playerCombat);
+        playerCombat.SetDamageAmount(_attackDamage);
     }
 }
