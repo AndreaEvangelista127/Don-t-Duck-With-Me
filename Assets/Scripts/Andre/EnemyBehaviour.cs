@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, wobble);
     }
 
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
 
