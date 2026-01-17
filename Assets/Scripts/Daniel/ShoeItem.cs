@@ -10,7 +10,7 @@ internal class ShoeItem : BasePickUp
 
     public override void PickUp()
     {
-        TryGetComponent<PlayerController>(out PlayerController playerController);
+        TryGetComponent(out PlayerController playerController);
         playerController.SetPlayerSpeed(_playerSpeed);
     }
 }

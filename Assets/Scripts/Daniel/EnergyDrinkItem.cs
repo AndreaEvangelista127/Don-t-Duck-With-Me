@@ -10,6 +10,7 @@ public class EnergyDrinkItem : BasePickUp
 
     public override void PickUp()
     {
-
+        TryGetComponent(out PlayerCombat playerCombat);
+        playerCombat.SetFireRate(_attackSpeed);
     }
 }
