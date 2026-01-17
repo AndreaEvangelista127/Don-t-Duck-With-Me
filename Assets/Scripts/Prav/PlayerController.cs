@@ -10,12 +10,14 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D playerRigidbody;
 
+    private InsanityMeter playerInsanityMeter;
 
     private Vector2 playerMovementInput;
     private void Awake()
     {
         playerInputReader = GetComponent<PlayerInputReader>();
         playerRigidbody = GetComponent<Rigidbody2D>();
+
     }
 
     private void Update()
