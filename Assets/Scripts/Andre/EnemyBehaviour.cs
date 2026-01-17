@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
     [Header("Health")]
     [SerializeField] private int _maxHealth = 100;
     private int _currentHealth;
+    private FloatingHealthBar _healthBar;
 
     [Header("Movement")]
     [SerializeField] private float _moveSpeed = 2f;
@@ -12,6 +13,7 @@ public class Enemy : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private float wobbleSpeed = 5f;
     [SerializeField] private float wobbleAmplitude = 5f;
+
 
 
     private Transform _player;
@@ -25,6 +27,9 @@ public class Enemy : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _rb = GetComponent<Rigidbody2D>();
         _startPosition = transform.position;
+
+        _healthBar = GetComponentInChildren<FloatingHealthBar>();
+        _healthBar.UpdateHealthBarValue(_currentHealth, _maxHealth);
     }
 
     private void FixedUpdate()
@@ -55,6 +60,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
+        _healthBar.UpdateHealthBarValue(_currentHealth, _maxHealth);
 
         if (_currentHealth <= 0)
         {
