@@ -31,7 +31,13 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         _currentHealth = _maxHealth;
+        
         _player = GameObject.FindGameObjectWithTag("Player").transform;
+        if(_player == null)
+        {
+            return;
+        }
+
         _rb = GetComponent<Rigidbody2D>();
         _startPosition = transform.position;
 
