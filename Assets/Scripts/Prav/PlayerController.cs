@@ -10,8 +10,6 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D playerRigidbody;
 
-    private InsanityMeter playerInsanityMeter;
-
     private Vector2 playerMovementInput;
     private void Awake()
     {

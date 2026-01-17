@@ -26,7 +26,6 @@ public class PlayerCombat : MonoBehaviour
 
     private void HandleShooting()
     {
-
         if (Time.time > timeToShoot)
         {
             timeToShoot = Time.time + fireRate;
@@ -39,7 +38,7 @@ public class PlayerCombat : MonoBehaviour
             shootDirection = shootDirection - transform.position;
 
             audioSource.PlayOneShot(shootSound);
-
+            CrosshairManager.Instance.OnShoot();
             Projectile projectile = Instantiate(projectileRef, transform.position, Quaternion.identity);
             projectile.LaunchProjectile(shootDirection, 10.0f, damageAmount);
         }

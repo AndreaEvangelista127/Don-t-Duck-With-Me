@@ -21,6 +21,8 @@ public class Projectile : MonoBehaviour
     {
         if (collision.TryGetComponent(out Enemy enemy))
         {
+            CrosshairManager.Instance.OnDamage();
+
             enemy.TakeDamage(damageAmount);
             Destroy(gameObject);
         }
