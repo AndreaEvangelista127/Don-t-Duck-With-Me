@@ -3,14 +3,13 @@ using UnityEngine;
 internal class ShoeItem : BasePickUp
 {
     [SerializeField] private int _playerSpeed;
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        base.OnTriggerEnter2D (collision);
-    }
 
-    public override void PickUp()
+
+    public override void PickUp(Collider2D c)
     {
-        TryGetComponent(out PlayerController playerController);
-        playerController.SetPlayerSpeed(_playerSpeed);
+        if (c.TryGetComponent(out PlayerController playerController))
+        {
+            playerController.SetPlayerSpeed(_playerSpeed);
+        }
     }
 }

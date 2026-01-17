@@ -3,14 +3,12 @@ using UnityEngine;
 public class CrossItem : BasePickUp
 {
     [SerializeField] private int _playerHealth;
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        base.OnTriggerEnter2D(collision);
-    }
 
-    public override void PickUp()
+    public override void PickUp(Collider2D c)
     {
-        TryGetComponent(out PlayerHealthComponent playerHealth);
-        playerHealth.AddHealth(_playerHealth);
+        if (c.TryGetComponent(out PlayerHealthComponent playerHealth))
+        {
+            playerHealth.AddHealth(_playerHealth);
+        }
     }
 }

@@ -3,14 +3,12 @@ using UnityEngine;
 public class KFDItem : BasePickUp
 {
     [SerializeField] private int _attackDamage;
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        base.OnTriggerEnter2D(collision);
-    }
 
-    public override void PickUp()
+    public override void PickUp(Collider2D c)
     {
-        TryGetComponent(out PlayerCombat playerCombat);
-        playerCombat.SetDamageAmount(_attackDamage);
+        if (c.TryGetComponent(out PlayerCombat playerCombat))
+        {
+            playerCombat.SetDamageAmount(_attackDamage);
+        }
     }
 }

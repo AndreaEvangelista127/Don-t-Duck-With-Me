@@ -3,8 +3,14 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
+
     [SerializeField]
-    private PlayerDataSO playerData;
+    private float playerSpeed = 10.0f;
+
+    [SerializeField]
+    private Transform playerArt;
+
+    private Vector3 startingScale;
 
     private PlayerInputReader playerInputReader;
 
@@ -15,7 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInputReader = GetComponent<PlayerInputReader>();
         playerRigidbody = GetComponent<Rigidbody2D>();
-
+        startingScale = transform.localScale;
     }
 
     private void Update()
@@ -27,6 +33,15 @@ public class PlayerController : MonoBehaviour
         }
 
         playerMovementInput = playerInputReader.PlayerMovementValue;
+
+
+        if (playerMovementInput.x < 0)
+        {
+            playerArt.localScale = new Vector3(startingScale.x, startingScale.y, startingScale.z);   
+        }
+        else if (playerMovementInput.x > 0)
+        {
+            playerArt.localScale = new Vector3(-startingScale.x, startingScale.y, startingScale.z);        }
     }
 
     private void FixedUpdate()
@@ -36,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     public void HandleMovement(Vector2 movementValue, float deltaTime)
     {
-        Vector3 movementOffset = movementValue * playerData.PlayerSpeed * deltaTime;
+        Vector3 movementOffset = movementValue * playerSpeed * deltaTime;
         Vector2 targetPosition = playerRigidbody.position + (Vector2)movementOffset;
 
         playerRigidbody.MovePosition(targetPosition);
@@ -48,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetPlayerSpeed(float playerSpeed)
     {
-        playerData.PlayerSpeed = playerSpeed;
+        this.playerSpeed = playerSpeed;
+        Debug.Log("Setting player speed");
     }
 }

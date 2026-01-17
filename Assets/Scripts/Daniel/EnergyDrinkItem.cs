@@ -3,14 +3,12 @@ using UnityEngine;
 public class EnergyDrinkItem : BasePickUp
 {
     [SerializeField] private float _attackSpeed;
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        base.OnTriggerEnter2D(collision);
-    }
 
-    public override void PickUp()
+    public override void PickUp(Collider2D c)
     {
-        TryGetComponent(out PlayerCombat playerCombat);
-        playerCombat.SetFireRate(_attackSpeed);
+        if (c.TryGetComponent(out PlayerCombat playerCombat))
+        {
+            playerCombat.SetFireRate(_attackSpeed);
+        }
     }
 }
