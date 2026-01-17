@@ -1,6 +1,10 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class InsanityMeter : MonoBehaviour
 {
@@ -13,38 +17,57 @@ public class InsanityMeter : MonoBehaviour
     [SerializeField]
     private Slider insanitySlider;
 
+    [SerializeField]
+    private Volume postProcess;
+
+    private Bloom playerBloom;
+    private LensDistortion playerDistortion;
+    private ChromaticAberration playerChromatic;
+    private LiftGammaGain playerLift;
+
     private float insanity = 100.0f;
     private float elapsedTime = 0;  
 
     public event Action<float> OnInsanityChanged;
     public event Action OnInsanityZero;
 
-
     private void Awake()
     {
         insanity = 100.0f;
-        RefreshInsanity();
+        RefreshInsanityUI();
+
+        postProcess.profile.TryGet(out playerBloom);
+        postProcess.profile.TryGet(out playerChromatic);
+        postProcess.profile.TryGet(out playerDistortion);
+        postProcess.profile.TryGet(out playerLift);
     }
     public void AddInsanity(float value)
     {
         insanity = Mathf.Clamp(insanity + value, 0.0f, 100.0f);
         OnInsanityChanged?.Invoke(value);
+        playerBloom.intensity.value += .1f;
+        playerChromatic.intensity.value += .1f;
+        playerDistortion.intensity.value += .1f;
         Debug.Log("Insanity: " + insanity);
-        RefreshInsanity();
+        RefreshInsanityUI();
     }
 
     public void ReduceInsanity(float value)
     {
         insanity = Mathf.Clamp(insanity - value, 0.0f, 100.0f);
         OnInsanityChanged?.Invoke(value);
-        Debug.Log("Insanity: " + insanity);
+
+        ReduceEffects(.1f);
+        StartSmoothRandomize(.5f);
+
         if (insanity == 0)
         {
-            OnInsanityZero?.Invoke();   
+            OnInsanityZero?.Invoke();
+            ClearEffects();
         }
-        RefreshInsanity();
+        RefreshInsanityUI();
     }
-    private void RefreshInsanity()
+    private void RefreshInsanityUI()
     {
         insanitySlider.value = insanity/100.0f;    
     }
@@ -57,5 +80,50 @@ public class InsanityMeter : MonoBehaviour
             ReduceInsanity(amountToReduce);
             elapsedTime = 0.0f;
         }
+    }
+    public void StartSmoothRandomize(float duration)
+    {
+        StartCoroutine(RandomizeLiftRoutine(duration));
+    }
+
+    private IEnumerator RandomizeLiftRoutine(float duration)
+    {
+        float elapsed = 0f;
+
+        Vector4 startGain = playerLift.gain.value;
+        Vector4 startLift = playerLift.lift.value;
+        Vector4 startGamma = playerLift.gamma.value;
+
+        Vector4 targetGain = new Vector4(Random.Range(0.9f, 1.1f), Random.Range(0.9f, 1.1f), Random.Range(0.9f, 1.1f), 0);
+        Vector4 targetLift = new Vector4(Random.Range(0.9f, 1.1f), Random.Range(0.9f, 1.1f), Random.Range(0.9f, 1.1f), 0);
+        Vector4 targetGamma = new Vector4(Random.Range(0.9f, 1.1f), Random.Range(0.9f, 1.1f), Random.Range(0.9f, 1.1f), 0);
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+
+            playerLift.gain.Interp(startGain, targetGain, t);
+            playerLift.lift.Interp(startLift, targetLift, t);
+            playerLift.gamma.Interp(startGamma, targetGamma, t);
+
+            yield return null;
+        }
+    }
+
+    private void ClearEffects()
+    {
+        playerBloom.intensity.value = 0.0f;
+        playerChromatic.intensity.value = 0f;
+        playerDistortion.intensity.value = 0f;
+
+    }
+
+    private void ReduceEffects(float intensity)
+    {
+        playerBloom.intensity.value -= intensity;
+        playerChromatic.intensity.value -= intensity;
+        playerDistortion.intensity.value -= intensity;
+
     }
 }
