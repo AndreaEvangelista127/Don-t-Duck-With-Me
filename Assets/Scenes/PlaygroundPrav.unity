@@ -670,7 +670,6 @@ GameObject:
   - component: {fileID: 667858151}
   - component: {fileID: 667858153}
   - component: {fileID: 667858154}
-  - component: {fileID: 667858155}
   m_Layer: 0
   m_Name: FollowCamera
   m_TagString: Untagged
@@ -775,23 +774,6 @@ MonoBehaviour:
     MaxWindowSize: 0
     Padding: 0
   m_LegacyMaxWindowSize: -2
---- !u!114 &667858155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667858149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NoiseProfile: {fileID: 11400000, guid: a3dacaec0287d7444b4bd276816e1666, type: 2}
-  PivotOffset: {x: 0, y: 0, z: 0}
-  AmplitudeGain: 1
-  FrequencyGain: 1
-  m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &813399983
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,7 +912,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -337
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.11245993, g: 0.24528301, b: 0.117113024, a: 1}
   m_FlipX: 0
@@ -1556,7 +1538,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05137485, y: 0.05137485, z: 0.05137485}
+  m_LocalScale: {x: 0.68887, y: 0.68887, z: 0.68887}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2105288449}
@@ -1605,7 +1587,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 58
-  m_Sprite: {fileID: 21300000, guid: 66682af4a582a374d8207f0b61661acd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b8cb1e4f9b30e043887ed03d1c34ade, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1968,7 +1950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c129627024a46a489b38f3d49c684af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenInsanityDecrease: 6
+  timeBetweenInsanityDecrease: 1
   amountToReduce: 10
   insanitySlider: {fileID: 1178766134}
   postProcess: {fileID: 333189391}
@@ -2072,8 +2054,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.3226986
+        time: 0.010951949
+        value: 0.8478527
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -2095,7 +2077,7 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 0.24085334, b: 0, a: 1}
-      key1: {r: 0.9607844, g: 0.86274517, b: 0.64705884, a: 1}
+      key1: {r: 0.9547169, g: 0.65314245, b: 0.28641498, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
