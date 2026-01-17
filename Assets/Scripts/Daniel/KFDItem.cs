@@ -10,6 +10,6 @@ public class KFDItem : BasePickUp
 
     public override void PickUp()
     {
-
+        TryGetComponent<>
     }
 }
