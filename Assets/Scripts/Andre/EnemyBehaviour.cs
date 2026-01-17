@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
     [Header("Health")]
     [SerializeField] private int _maxHealth = 100;
     private int _currentHealth;
+    private FloatingHealthBar _healthBar;
 
     [Header("Movement")]
     [SerializeField] private float _moveSpeed = 2f;
@@ -15,6 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float wobbleAmplitude = 5f;
 
     [SerializeField] private Transform artTransform;
+
 
     private Transform _player;
     private Rigidbody2D _rb;
@@ -27,6 +29,9 @@ public class Enemy : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _rb = GetComponent<Rigidbody2D>();
         _startPosition = transform.position;
+
+        _healthBar = GetComponentInChildren<FloatingHealthBar>();
+        _healthBar.UpdateHealthBarValue(_currentHealth, _maxHealth);
     }
 
     private void FixedUpdate()
@@ -57,6 +62,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
+        _healthBar.UpdateHealthBarValue(_currentHealth, _maxHealth);
 
         transform.DOPunchScale(Vector3.one * 2.5f, .25f);
 
