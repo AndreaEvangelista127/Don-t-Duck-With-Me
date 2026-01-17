@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ChohyunMain.unity
     guid: 411e5aadfeb48624c9260e6e39609015
   - enabled: 1
-    path: Assets/Scenes/Playground.unity
+    path: Assets/Scenes/PlaygroundPrav.unity
     guid: 1a8e00f9a7a9cc244bfbb0ac869cf37f
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

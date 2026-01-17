@@ -22,7 +22,7 @@ public class MainMenuController : MonoBehaviour
     public void StartGame() 
     {
         PlayClick();
-        SceneManager.LoadScene("Playground");
+        SceneManager.LoadScene("PlaygroundPrav");
     }
     public void QuitGame() 
     {
