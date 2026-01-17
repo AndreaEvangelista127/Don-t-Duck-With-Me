@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnergyDrinkItem : BasePickUp
 {
-    [SerializeField] private int _attackSpeed;
+    [SerializeField] private float _attackSpeed;
     public void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
