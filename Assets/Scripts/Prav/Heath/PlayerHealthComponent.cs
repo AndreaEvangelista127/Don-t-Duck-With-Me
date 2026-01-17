@@ -2,15 +2,29 @@ using UnityEngine;
 
 public class PlayerHealthComponent : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private int currentHealth;
+    private int maxHealth = 100;
+
+    private void Start()
     {
-        
+        currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddHealth(int health)
     {
-        
+        currentHealth += health;
+
+        if (currentHealth <= 0)
+        {
+            
+        }
     }
+
+    public void TakeDamage(int health)
+    {
+        currentHealth -= health;
+    }
+
+
+
 }
