@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class BasePickUp : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         PickUp();
         Destroy(gameObject);
@@ -10,6 +10,6 @@ public abstract class BasePickUp : MonoBehaviour
 
     public virtual void PickUp()
     {
-        // Basisverhalten (falls nötig)
+        
     }
 }
