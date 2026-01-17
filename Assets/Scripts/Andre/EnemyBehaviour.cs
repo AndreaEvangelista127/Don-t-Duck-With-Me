@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -13,6 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float wobbleSpeed = 5f;
     [SerializeField] private float wobbleAmplitude = 5f;
 
+    [SerializeField] private Transform artTransform;
 
     private Transform _player;
     private Rigidbody2D _rb;
@@ -55,6 +57,8 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
+
+        transform.DOPunchScale(Vector3.one * 2.5f, .25f);
 
         if (_currentHealth <= 0)
         {
