@@ -1,8 +1,10 @@
 using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+
     [Header("Health")]
     [SerializeField] private int _maxHealth = 100;
     private int _currentHealth;
@@ -14,6 +16,8 @@ public class Enemy : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private float wobbleSpeed = 5f;
     [SerializeField] private float wobbleAmplitude = 5f;
+    [SerializeField] private List<Sprite> spirtes;
+    [SerializeField] private SpriteRenderer renderer;
 
     [Header("Combat")]
     [SerializeField] private int _contactDamage = 10;
@@ -31,8 +35,13 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         _currentHealth = _maxHealth;
+
+        GameObject go = GameObject.FindGameObjectWithTag("Player");
         
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (go)
+        {
+            _player = go.transform;
+        }
         if(_player == null)
         {
             return;
@@ -43,6 +52,10 @@ public class Enemy : MonoBehaviour
 
         _healthBar = GetComponentInChildren<FloatingHealthBar>();
         _healthBar.UpdateHealthBarValue(_currentHealth, _maxHealth);
+
+        int randomNumber = Random.Range(0, spirtes.Count - 1);
+        Sprite image = spirtes[randomNumber];
+        renderer.sprite = image;    
     }
 
     private void FixedUpdate()

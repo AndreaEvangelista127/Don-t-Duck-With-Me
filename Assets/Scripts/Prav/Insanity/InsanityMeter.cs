@@ -20,6 +20,7 @@ public class InsanityMeter : MonoBehaviour
     [SerializeField]
     private Volume postProcess;
 
+    private PlayerHealthComponent playerHealth;
     private Bloom playerBloom;
     private LensDistortion playerDistortion;
     private ChromaticAberration playerChromatic;
@@ -40,6 +41,8 @@ public class InsanityMeter : MonoBehaviour
         postProcess.profile.TryGet(out playerChromatic);
         postProcess.profile.TryGet(out playerDistortion);
         postProcess.profile.TryGet(out playerLift);
+
+        playerHealth = GetComponent<PlayerHealthComponent>();
     } 
     public void AddInsanity(float value)
     {
@@ -116,6 +119,8 @@ public class InsanityMeter : MonoBehaviour
 
     private void ClearEffects()
     {
+        playerHealth.Die();
+
         playerBloom.intensity.value = 0.0f;
         playerChromatic.intensity.value = 0f;
         playerDistortion.intensity.value = 0f;

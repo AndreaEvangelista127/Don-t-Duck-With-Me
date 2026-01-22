@@ -625,4 +625,11 @@ MonoBehaviour:
   _moveSpeed: 2
   wobbleSpeed: 5
   wobbleAmplitude: 5
+  spirtes:
+  - {fileID: 8658343877352668373, guid: 6f037c99877210c46a79f69c7dd61f9d, type: 3}
+  - {fileID: 21300000, guid: 95a6f921ba45e284ba7329a125b984c4, type: 3}
+  - {fileID: -7195765566143441334, guid: bd73e2b54924231468d164dcb272d3ae, type: 3}
+  renderer: {fileID: 6870197374351092091}
+  _contactDamage: 10
+  _damageRate: 1
   artTransform: {fileID: 4013110384015731194}

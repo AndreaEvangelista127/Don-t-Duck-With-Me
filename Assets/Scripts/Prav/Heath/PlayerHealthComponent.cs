@@ -9,6 +9,7 @@ public class PlayerHealthComponent : MonoBehaviour
     private int maxHealth = 100;
     private FloatingHealthBar _healthBar;
 
+    private bool isDead;
 
     private void Start()
     {
@@ -22,28 +23,26 @@ public class PlayerHealthComponent : MonoBehaviour
     public void AddHealth(int health)
     {
         currentHealth += health;
-
-        if (currentHealth <= 0)
-        {
-            
-        }
     }
 
     public void TakeDamage(int health)
     {
+        if (isDead) return;
+
+
         currentHealth -= health;
 
         _healthBar.UpdateHealthBarValue(currentHealth, maxHealth);
 
         if (currentHealth <= 0)
         {
-            _gameOverImage.gameObject.SetActive(true);
             Die();
         }
     }
 
-    private void Die()
+    public void Die()
     {
+        _gameOverImage.gameObject.SetActive(true);
         Destroy(gameObject);
     }
 
