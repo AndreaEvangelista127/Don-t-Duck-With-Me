@@ -19,5 +19,4 @@ W A S D	Mouse	Left Click
 Team
 Member	Role
 Andrea	Gameplay programming: player movement and rifle
-Credits
 
